@@ -1,0 +1,56 @@
+count = 1
+
+define :ap_param_ex do |samp|
+  sample samp
+  if count < 4
+    sleep 1
+  elsif count <8
+    sleep 2
+  else
+    print("count is too big!")
+  end
+  print (count)
+  count = count + 1
+end
+
+live_loop :testing do
+  ap_param_ex :ambi_choir
+end
+
+
+
+use_bpm 114
+use_synth :pretty_bell
+
+define :guitar do |harry, styles|
+  play harry
+  sleep styles
+end
+
+count = 0
+
+define :slect do |guitar2|
+  sample guitar2
+  if count >2
+    print("in progress")
+  elsif count <15
+    print("enjoy! l:3")
+  end
+  print (count)
+  count = count + 1
+end
+
+
+=begin
+live_loop :guitar2 do
+  guitar :a2, 0.5
+  guitar :a3, 0.5
+  guitar :a1, 1
+  guitar :b1, 1
+  guitar :b1, 0.5
+end
+=end
+live_loop :testing do
+  slect :guitar2
+  sleep 1
+end
